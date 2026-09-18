@@ -1,0 +1,132 @@
+.footer {
+  background-color: #0E1B29;
+  color: #FFFFFF;
+  padding-top: 70px;
+}
+
+.mainContent {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monogramWrapper {
+  margin-bottom: 12px;
+}
+
+.monogramImg {
+  width: auto;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brandTitle {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  color: #C8A261;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #E2E8F0;
+  margin-bottom: 6px;
+}
+
+.subTagline {
+  font-size: 0.88rem;
+  color: #94A3B8;
+  margin-bottom: 28px;
+}
+
+.socialGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.socialBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #0E1B29;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.socialBtn:hover {
+  background: #C8A261;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(200, 162, 97, 0.4);
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 22px 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.bottomFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.legalLink {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  transition: color var(--transition-fast);
+}
+
+.legalLink:hover {
+  color: #FFFFFF;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: #94A3B8;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .bottomFlex {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .legalLinks {
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+}

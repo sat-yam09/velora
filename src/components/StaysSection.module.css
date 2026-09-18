@@ -1,0 +1,490 @@
+.staysSection {
+  position: relative;
+  background-color: #FAF8F5;
+  scroll-margin-top: 70px;
+}
+
+.flourishLeft {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.flourishRight {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.flourishImg {
+  width: auto;
+  height: auto;
+  max-width: 180px;
+}
+
+/* Scroll Track for Pinned Section */
+.trackContainer {
+  position: relative;
+  height: calc(100vh + 240vh);
+}
+
+/* Sticky Viewport: perfectly pins at top: 70px below navbar */
+.stickyViewport {
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px 0;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerArea {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* 2-Column Content Grid: perfectly balanced & aligned */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
+  align-items: stretch;
+  height: clamp(380px, 46vh, 460px);
+  width: 100%;
+}
+
+/* Left: Image Card Container - STUCK in exact position */
+.imageCardContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(14, 27, 41, 0.12), 0 2px 8px rgba(14, 27, 41, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: #F3ECE2;
+}
+
+.roomCard {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.45s;
+  will-change: opacity, transform;
+}
+
+.cardActive {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.cardPast {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.98);
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cardFuture {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.roomImage {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.roomCard:hover .roomImage {
+  transform: scale(1.04);
+}
+
+.cardHoverOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 27, 41, 0.3);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+  z-index: 3;
+}
+
+.roomCard:hover .cardHoverOverlay {
+  opacity: 1;
+}
+
+.viewBadge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0E1B29;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(6px);
+  transition: transform var(--transition-fast);
+}
+
+.roomCard:hover .viewBadge {
+  transform: translateY(0);
+}
+
+.roomCounterBadge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(14, 27, 41, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+.roomMetaOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 24px 20px;
+  background: linear-gradient(to top, rgba(14, 27, 41, 0.75) 0%, rgba(14, 27, 41, 0.3) 60%, transparent 100%);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.roomCategoryBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-gold-light);
+}
+
+.roomTitleBadge {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+/* Right: Story & Description Card - Aligned top and bottom */
+.storyCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0 6px 12px;
+}
+
+.storyTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.storyTitle {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.1vw, 2.5rem);
+  font-weight: 700;
+  color: #0E1B29;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.storyDesc {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #4A5568;
+  font-weight: 400;
+  max-width: 500px;
+}
+
+.storyBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.viewRoomsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0E1B29;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 4px 0;
+  position: relative;
+  transition: color var(--transition-fast);
+  width: fit-content;
+}
+
+.viewRoomsBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: #0E1B29;
+  transform-origin: left;
+  transition: transform var(--transition-fast);
+}
+
+.viewRoomsBtn:hover {
+  color: var(--color-gold);
+}
+
+.viewRoomsBtn:hover::after {
+  background-color: var(--color-gold);
+}
+
+.viewRoomsBtn:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+.arrowIcon {
+  transition: transform var(--transition-fast);
+}
+
+/* Stacking Progress Dots */
+.progressNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #D8D2C6;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.dot:hover {
+  background: #A0988A;
+  transform: scale(1.15);
+}
+
+.activeDot {
+  width: 28px;
+  border-radius: 12px;
+  background: #0E1B29;
+}
+
+/* Room Quick View Modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 32, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: #FFFFFF;
+  border-radius: 20px;
+  max-width: 680px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: #0E1B29;
+  transition: background var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background: #FFFFFF;
+}
+
+.modalImageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalDetails {
+  padding: 28px 32px 32px;
+}
+
+.modalCategory {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+}
+
+.modalTitle {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #0E1B29;
+  margin: 6px 0 8px;
+}
+
+.modalSpecs {
+  font-size: 0.92rem;
+  color: #718096;
+  margin-bottom: 14px;
+}
+
+.modalDesc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #4A5568;
+  margin-bottom: 24px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reserveBtn {
+  background: #0E1B29;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+}
+
+.reserveBtn:hover {
+  background: #1A2E44;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+  .trackContainer {
+    height: auto;
+  }
+
+  .stickyViewport {
+    position: static;
+    height: auto;
+    padding: 60px 0 80px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 36px;
+  }
+
+  .imageCardContainer {
+    height: clamp(260px, 48vw, 380px);
+  }
+
+  .storyCard {
+    height: auto;
+    padding: 0;
+    gap: 28px;
+  }
+
+  .storyTitle {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .storyDesc {
+    font-size: 0.98rem;
+  }
+
+  .storyBottom {
+    gap: 20px;
+  }
+}
