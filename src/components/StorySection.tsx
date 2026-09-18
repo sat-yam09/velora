@@ -96,33 +96,6 @@ export default function StorySection() {
                 height={450}
                 className={styles.storyImg}
               />
-              {/* Morphing SVG Border Box */}
-              {activeStep === 0 && (
-                <div className={styles.morphBox}>
-                  <svg className={styles.morphSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <rect
-                      x="1"
-                      y="1"
-                      width="98"
-                      height="98"
-                      rx="4"
-                      ry="4"
-                      fill="none"
-                      stroke="url(#goldStroke)"
-                      strokeWidth="2"
-                      className={styles.animatedStroke}
-                    />
-                    <defs>
-                      <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#E6C875" />
-                        <stop offset="50%" stopColor="#B58925" />
-                        <stop offset="100%" stopColor="#E6C875" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className={styles.liveIndicator}>Active Chapter</span>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -179,32 +152,6 @@ export default function StorySection() {
                   height={340}
                   className={styles.storyImg}
                 />
-                {activeStep === 1 && (
-                  <div className={styles.morphBox}>
-                    <svg className={styles.morphSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <rect
-                        x="1"
-                        y="1"
-                        width="98"
-                        height="98"
-                        rx="4"
-                        ry="4"
-                        fill="none"
-                        stroke="url(#goldStroke2)"
-                        strokeWidth="2"
-                        className={styles.animatedStroke}
-                      />
-                      <defs>
-                        <linearGradient id="goldStroke2" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#E6C875" />
-                          <stop offset="50%" stopColor="#B58925" />
-                          <stop offset="100%" stopColor="#E6C875" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span className={styles.liveIndicator}>Milestone 2000</span>
-                  </div>
-                )}
               </div>
             </div>
 
@@ -261,32 +208,6 @@ export default function StorySection() {
                   height={340}
                   className={styles.storyImg}
                 />
-                {activeStep === 2 && (
-                  <div className={styles.morphBox}>
-                    <svg className={styles.morphSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <rect
-                        x="1"
-                        y="1"
-                        width="98"
-                        height="98"
-                        rx="4"
-                        ry="4"
-                        fill="none"
-                        stroke="url(#goldStroke3)"
-                        strokeWidth="2"
-                        className={styles.animatedStroke}
-                      />
-                      <defs>
-                        <linearGradient id="goldStroke3" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#E6C875" />
-                          <stop offset="50%" stopColor="#B58925" />
-                          <stop offset="100%" stopColor="#E6C875" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span className={styles.liveIndicator}>Milestone 2015</span>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -310,32 +231,6 @@ export default function StorySection() {
                   height={340}
                   className={styles.storyImg}
                 />
-                {activeStep === 3 && (
-                  <div className={styles.morphBox}>
-                    <svg className={styles.morphSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <rect
-                        x="1"
-                        y="1"
-                        width="98"
-                        height="98"
-                        rx="4"
-                        ry="4"
-                        fill="none"
-                        stroke="url(#goldStroke4)"
-                        strokeWidth="2"
-                        className={styles.animatedStroke}
-                      />
-                      <defs>
-                        <linearGradient id="goldStroke4" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stopColor="#E6C875" />
-                          <stop offset="50%" stopColor="#B58925" />
-                          <stop offset="100%" stopColor="#E6C875" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span className={styles.liveIndicator}>Milestone 2026</span>
-                  </div>
-                )}
               </div>
             </div>
 

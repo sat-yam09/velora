@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './StaysSection.module.css';
 
 interface StaysSectionProps {
@@ -78,7 +78,7 @@ export default function StaysSection({ onOpenBooking }: StaysSectionProps) {
       requestAnimationFrame(() => {
         ticking = false;
         if (!trackRef.current) return;
-        if (window.innerWidth <= 960) return; // On mobile, allow direct dot taps or touch swipe
+        if (window.innerWidth <= 960) return;
 
         const trackRect = trackRef.current.getBoundingClientRect();
         const headerOffset = 70;
@@ -96,21 +96,6 @@ export default function StaysSection({ onOpenBooking }: StaysSectionProps) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Clicking dot switches room and syncs pinned scroll track
-  const handleDotClick = (index: number) => {
-    setActiveCardIndex(index);
-    if (trackRef.current && window.innerWidth > 960) {
-      const trackRect = trackRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY;
-      const trackTop = scrollTop + trackRect.top - 70;
-      const maxScroll = trackRef.current.offsetHeight - window.innerHeight;
-      if (maxScroll > 0) {
-        const targetScroll = trackTop + (index / (rooms.length - 1)) * maxScroll;
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-      }
-    }
-  };
 
   // Touch swipe handling for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -196,11 +181,6 @@ export default function StaysSection({ onOpenBooking }: StaysSectionProps) {
                           className={styles.roomImage}
                           priority={idx === 0}
                         />
-                        <div className={styles.cardHoverOverlay}>
-                          <span className={styles.viewBadge}>
-                            <Sparkles size={14} /> View Details
-                          </span>
-                        </div>
                         <div className={styles.roomCounterBadge}>
                           <span>0{idx + 1} / 0{rooms.length}</span>
                         </div>
@@ -234,19 +214,6 @@ export default function StaysSection({ onOpenBooking }: StaysSectionProps) {
                     <span>View all rooms</span>
                     <ArrowRight size={17} className={styles.arrowIcon} />
                   </button>
-
-                  {/* Visual Progress Dots */}
-                  <div className={styles.progressNav}>
-                    {rooms.map((_, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className={`${styles.dot} ${activeCardIndex === i ? styles.activeDot : ''}`}
-                        onClick={() => handleDotClick(i)}
-                        aria-label={`Go to room ${i + 1}`}
-                      />
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>

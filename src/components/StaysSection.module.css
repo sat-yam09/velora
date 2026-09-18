@@ -74,7 +74,7 @@
   width: 100%;
 }
 
-/* Left: Image Card Container - STUCK in exact position */
+/* Left: Image Card Container - STUCK in exact position with NO border line */
 .imageCardContainer {
   position: relative;
   width: 100%;
@@ -82,7 +82,7 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(14, 27, 41, 0.12), 0 2px 8px rgba(14, 27, 41, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: none;
   background-color: #F3ECE2;
 }
 
@@ -94,6 +94,7 @@
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  border: none;
   transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
               transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
               visibility 0.45s;
@@ -140,41 +141,6 @@
   transform: scale(1.04);
 }
 
-.cardHoverOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(14, 27, 41, 0.3);
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity var(--transition-fast);
-  z-index: 3;
-}
-
-.roomCard:hover .cardHoverOverlay {
-  opacity: 1;
-}
-
-.viewBadge {
-  background: rgba(255, 255, 255, 0.95);
-  color: #0E1B29;
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(6px);
-  transition: transform var(--transition-fast);
-}
-
-.roomCard:hover .viewBadge {
-  transform: translateY(0);
-}
-
 .roomCounterBadge {
   position: absolute;
   top: 18px;
@@ -188,7 +154,6 @@
   letter-spacing: 0.08em;
   padding: 5px 14px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 2;
 }
 
@@ -258,7 +223,6 @@
 .storyBottom {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .viewRoomsBtn {
@@ -301,35 +265,6 @@
 
 .arrowIcon {
   transition: transform var(--transition-fast);
-}
-
-/* Stacking Progress Dots */
-.progressNav {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #D8D2C6;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  cursor: pointer;
-  border: none;
-  padding: 0;
-}
-
-.dot:hover {
-  background: #A0988A;
-  transform: scale(1.15);
-}
-
-.activeDot {
-  width: 28px;
-  border-radius: 12px;
-  background: #0E1B29;
 }
 
 /* Room Quick View Modal */
